@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Molecula × Glamour | Парфюмерный Проект</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 50%, #1a1f2e 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            padding: 60px;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Animated Background Gradient */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                #1e293b 0%, 
+                #334155 25%, 
+                #475569 50%, 
+                #334155 75%, 
+                #1e293b 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Mathematical Grid Background */
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Liquid Eye Effect */
+        .liquid-eye-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .liquid-eye {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            pointer-events: none;
+            filter: url(#goo);
+            transition: all 0.2s ease-out;
+        }
+
+        .eye-outer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(148, 163, 184, 0.2) 0%,
+                rgba(100, 116, 139, 0.15) 40%,
+                rgba(71, 85, 105, 0.1) 100%);
+            animation: eyePulse 3s ease-in-out infinite;
+        }
+
+        .eye-pupil {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, 
+                rgba(203, 213, 225, 0.3) 0%,
+                rgba(148, 163, 184, 0.2) 50%,
+                rgba(100, 116, 139, 0.1) 100%);
+            animation: pupilFloat 4s ease-in-out infinite;
+        }
+
+        .eye-shine {
+            position: absolute;
+            top: 25%;
+            left: 35%;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(241, 245, 249, 0.4) 0%,
+                rgba(226, 232, 240, 0.2) 50%,
+                transparent 100%);
+            animation: shineGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes eyePulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pupilFloat {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                transform: translate(-45%, -45%) scale(1.05);
+            }
+        }
+
+        @keyframes shineGlow {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+
+        /* Liquid blob effects */
+        .liquid-blob {
+            position: absolute;
+            border-radius: 50%;
+            animation: blobFloat 8s ease-in-out infinite;
+            filter: blur(40px);
+            opacity: 0.15;
+        }
+
+        .blob1 {
+            width: 400px;
+            height: 400px;
+            top: 20%;
+            left: 10%;
+            background: radial-gradient(circle, #64748b 0%, transparent 70%);
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            width: 350px;
+            height: 350px;
+            top: 60%;
+            right: 15%;
+            background: radial-gradient(circle, #475569 0%, transparent 70%);
+            animation-delay: 2s;
+        }
+
+        .blob3 {
+            width: 300px;
+            height: 300px;
+            bottom: 20%;
+            left: 50%;
+            background: radial-gradient(circle, #334155 0%, transparent 70%);
+            animation-delay: 4s;
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+            }
+            33% { 
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% { 
+                transform: translate(-50px, 50px) scale(0.9);
+            }
+        }
+
+        /* Content Styles */
+        .slide-content {
+            max-width: 1200px;
+            z-index: 2;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 200;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            color: #f1f5f9;
+            text-shadow: 0 2px 20px rgba(148, 163, 184, 0.3);
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 40px;
+            border-left: 4px solid #94a3b8;
+            padding-left: 30px;
+            color: #e2e8f0;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #cbd5e1;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        .highlight {
+            color: #f1f5f9;
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #94a3b8, #cbd5e1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .slide.active .highlight::after {
+            transform: scaleX(1);
+        }
+
+        /* Brand Grid with Logos */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .brand-item {
+            padding: 40px 30px;
+            background: rgba(51, 65, 85, 0.3);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+
+        .brand-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .brand-item:hover::before {
+            left: 100%;
+        }
+
+        .brand-item:hover {
+            background: rgba(71, 85, 105, 0.4);
+            border-color: rgba(148, 163, 184, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .brand-logo {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .brand-item:hover .brand-logo {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .brand-text {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #e2e8f0;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            padding: 40px;
+            background: rgba(51, 65, 85, 0.25);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(148, 163, 184, 0.1) 50%, 
+                transparent 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefit-card:hover {
+            background: rgba(71, 85, 105, 0.35);
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .benefit-number {
+            font-size: 4rem;
+            font-weight: 100;
+            color: rgba(148, 163, 184, 0.3);
+            margin-bottom: 20px;
+        }
+
+        /* Launch Grid */
+        .launch-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .launch-card {
+            padding: 50px 40px;
+            background: rgba(51, 65, 85, 0.3);
+            border: 2px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .launch-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #64748b, #94a3b8, #cbd5e1);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .launch-card:hover {
+            background: rgba(71, 85, 105, 0.4);
+            border-color: rgba(148, 163, 184, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .launch-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .launch-number {
+            font-size: 5rem;
+            font-weight: 100;
+            color: rgba(148, 163, 184, 0.15);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .launch-card h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #f1f5f9;
+        }
+
+        .launch-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        /* Navigation */
+        .nav-controls {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(148, 163, 184, 0.4);
+            background: rgba(30, 41, 59, 0.7);
+            color: #e2e8f0;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(71, 85, 105, 0.8);
+            border-color: #94a3b8;
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(148, 163, 184, 0.3);
+        }
+
+        /* Progress Indicator */
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(51, 65, 85, 0.5);
+            z-index: 100;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #64748b, #94a3b8, #cbd5e1);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 20px rgba(148, 163, 184, 0.5);
+        }
+
+        /* Slide Counter */
+        .slide-counter {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            font-size: 1rem;
+            color: #94a3b8;
+            z-index: 100;
+            font-weight: 300;
+        }
+
+        /* Model Comparison */
+        .model-box {
+            padding: 50px;
+            background: rgba(51, 65, 85, 0.3);
+            border: 2px solid rgba(148, 163, 184, 0.25);
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .model-box h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #f1f5f9;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #cbd5e1;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            margin-right: 15px;
+            color: #94a3b8;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px;
+            background: rgba(51, 65, 85, 0.25);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(71, 85, 105, 0.35);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 100;
+            margin-bottom: 10px;
+            color: #f1f5f9;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* SVG Filters */
+        svg {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .brand-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+            
+            .launch-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 40px;
+            }
+            
+            h1 { font-size: 4rem; }
+            h2 { font-size: 2.5rem; padding-left: 20px; }
+            
+            .launch-card {
+                padding: 40px 30px;
+            }
+            
+            .launch-number {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px;
+            }
+            
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            
+            .brand-grid { 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .benefits { 
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stats { 
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .launch-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .launch-card {
+                padding: 35px 25px;
+            }
+            
+            .nav-controls {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .slide-counter {
+                top: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG Filters for Liquid Effect -->
+    <svg>
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <div class="animated-background"></div>
+    <div class="grid-background"></div>
+    
+    <!-- Liquid Blobs -->
+    <div class="liquid-eye-container">
+        <div class="liquid-blob blob1"></div>
+        <div class="liquid-blob blob2"></div>
+        <div class="liquid-blob blob3"></div>
+        
+        <!-- Liquid Eye Effect -->
+        <div class="liquid-eye" id="liquidEye">
+            <div class="eye-outer"></div>
+            <div class="eye-pupil"></div>
+            <div class="eye-shine"></div>
+        </div>
+    </div>
+    
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div class="slide-counter" id="slideCounter">1 / 10</div>
+
+    <div class="container" id="container">
+        <!-- Slide 1: Cover -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-content" style="text-align: center;">
+                <h1 style="font-size: 6rem; margin-bottom: 20px;">BIO MOLECULA</h1>
+                <p style="font-size: 2rem; font-weight: 300; margin-bottom: 40px; color: #94a3b8;">×</p>
+                <h1 style="font-size: 5rem; margin-bottom: 60px;">GLAMOUR</h1>
+                <p style="font-size: 1.5rem; color: #94a3b8; letter-spacing: 3px; text-transform: uppercase;">Парфюмерный проект премиального уровня</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Executive Summary -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2>Предложение</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">$0</div>
+                        <div class="stat-label">Капитальных затрат</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50/50</div>
+                        <div class="stat-label">Маркетинг</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Luxury брендов</div>
+                    </div>
+                </div>
+                <p style="margin-top: 50px; font-size: 1.4rem;">
+                    Открытие парфюмерного отдела <span class="highlight">«под ключ»</span> по проверенной модели 7Saber Perfume. 
+                    Полное обеспечение: от дизайна до маркетинга.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Business Model -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2>Операционная модель</h2>
+                <div class="model-box">
+                    <h3>Ваши преимущества</h3>
+                    <ul class="feature-list">
+                        <li>Нулевые капитальные инвестиции</li>
+                        <li>Готовое решение «под ключ»</li>
+                        <li>Поставка товара на реализацию</li>
+                        <li>Ежемесячные расчёты</li>
+                        <li>Профессиональное обучение персонала</li>
+                        <li>Совместный маркетинг 50/50</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Brands Portfolio with Logos -->
+        <div class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2>Портфель брендов</h2>
+                <div class="brand-grid">
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/clivechristian.com" alt="Clive Christian" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Clive Christian</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/stefanoricci.com" alt="Stefano Ricci" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Stefano Ricci</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/byredo.com" alt="Byredo" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Byredo</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/kilianparis.com" alt="KILIAN Paris" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">KILIAN Paris</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/boadiceathevictorious.com" alt="Boadicea" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Boadicea</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/memoparis.com" alt="Memo Paris" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Memo Paris</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/drvranjes.com" alt="Dr. Vranjes" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Dr. Vranjes</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/louisvuitton.com" alt="Louis Vuitton" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Louis Vuitton</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/hermes.com" alt="Hermès" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Hermès</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/exnihiloparis.com" alt="Ex Nihilo" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Ex Nihilo</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/amouage.com" alt="Amouage" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Amouage</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/creedfragrances.com" alt="Creed" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Creed</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/moltonbrown.com" alt="Molton Brown" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Molton Brown</span>
+                    </div>
+                    <div class="brand-item">
+                        <img src="https://logo.clearbit.com/xerjoff.com" alt="Xerjoff" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span class="brand-text" style="display:none;">Xerjoff</span>
+                    </div>
+                    <div class="brand-item">
+                        <span class="brand-text" style="display:block;">Marc-Antoine Barrois</span>
+                    </div>
+                    <div class="brand-item">
+                        <span class="brand-text" style="display:block;">AUREZZI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: What We Provide -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2>Что мы обеспечиваем</h2>
+                <div class="benefits">
+                    <div class="benefit-card">
+                        <div class="benefit-number">01</div>
+                        <h3>Дизайн и производство</h3>
+                        <p>3D-концепт, мебель премиум-класса, освещение, брендинг, POS-материалы</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">02</div>
+                        <h3>Товар и логистика</h3>
+                        <p>Поставка на реализацию, пополнение стока, ротация ассортимента</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">03</div>
+                        <h3>Обучение персонала</h3>
+                        <p>Тренинги, скрипты продаж, техники подбора ароматов, работа с возражениями</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">04</div>
+                        <h3>Маркетинг и PR</h3>
+                        <p>Инфлюенсеры, события в бутике, digital-поддержка, VIP-программы</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Marketing Strategy -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2>Маркетинговая стратегия</h2>
+                <div class="model-box">
+                    <h3>Совместный бюджет 50/50</h3>
+                    <ul class="feature-list">
+                        <li>Работа с инфлюенсерами и лидерами мнений</li>
+                        <li>Закрытые презентации и мастер-классы</li>
+                        <li>Интеграция в социальных сетях</li>
+                        <li>BTL-активности и сэмплинг</li>
+                        <li>Gift-наборы и VIP-приглашения</li>
+                        <li>Персональные консультации по подбору</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 40px; font-size: 1.2rem; color: #94a3b8;">
+                    KPI: трафик, конверсия, средний чек, выручка/м², повторные покупки, ROI
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Financial Model -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <h2>Финансовая модель</h2>
+                <div class="benefits" style="grid-template-columns: 1fr;">
+                    <div class="benefit-card">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 30px;">Условия сотрудничества</h3>
+                        <ul class="feature-list">
+                            <li>Модель: поставка на реализацию (как с 7Saber)</li>
+                            <li>Цены: закупочные + РРЦ с ценовой дисциплиной</li>
+                            <li>Расчёты: ежемесячно по отчёту о продажах</li>
+                            <li>Документооборот: полный пакет с возможностью ЭДО</li>
+                            <li>Тестеры и расходники: за счёт Bio Molecula</li>
+                            <li>Качество: оригинальная продукция с сертификатами</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Launch Timeline -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2>План запуска</h2>
+                <div class="launch-grid">
+                    <div class="launch-card">
+                        <div class="launch-number">01</div>
+                        <h3>Старт-сессия</h3>
+                        <p>Аудит площадки, согласование целей и сценария</p>
+                    </div>
+                    <div class="launch-card">
+                        <div class="launch-number">02</div>
+                        <h3>Концепция</h3>
+                        <p>3D-макет, визуализация, материалы, брендинг</p>
+                    </div>
+                    <div class="launch-card">
+                        <div class="launch-number">03</div>
+                        <h3>Производство</h3>
+                        <p>Изготовление мебели, POS, подготовка ассортимента</p>
+                    </div>
+                    <div class="launch-card">
+                        <div class="launch-number">04</div>
+                        <h3>Монтаж</h3>
+                        <p>Установка, мерчандайзинг, тест-бар</p>
+                    </div>
+                    <div class="launch-card">
+                        <div class="launch-number">05</div>
+                        <h3>Обучение</h3>
+                        <p>Тренинг персонала, чек-листы, регламенты</p>
+                    </div>
+                    <div class="launch-card">
+                        <div class="launch-number">06</div>
+                        <h3>Запуск</h3>
+                        <p>Официальное открытие и PR-активность</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Benefits for Glamour -->
+        <div class="slide" data-slide="9">
+            <div class="slide-content">
+                <h2>Эффекты для Glamour</h2>
+                <div class="benefits">
+                    <div class="benefit-card">
+                        <div class="benefit-number">↑</div>
+                        <h3>Рост выручки</h3>
+                        <p>Увеличение среднего чека за счёт премиальной парфюмерии и home fragrance</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">★</div>
+                        <h3>Статус и престиж</h3>
+                        <p>Укрепление позиции как lifestyle-направления с высокими стандартами</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">♥</div>
+                        <h3>Лояльность</h3>
+                        <p>Повышение доли повторных покупок через экспертный подбор</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">◊</div>
+                        <h3>Контент и PR</h3>
+                        <p>Инфоповоды для соцсетей и работы с VIP-клиентами</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Call to Action -->
+        <div class="slide" data-slide="10">
+            <div class="slide-content" style="text-align: center;">
+                <h2 style="border: none; padding: 0; font-size: 4rem; margin-bottom: 60px;">Следующие шаги</h2>
+                <div class="model-box">
+                    <ul class="feature-list" style="text-align: left; max-width: 700px; margin: 0 auto;">
+                        <li>Подписать протокол о намерениях</li>
+                        <li>Утвердить концепцию и матрицу брендов</li>
+                        <li>Согласовать план-график запуска</li>
+                        <li>Запустить проект и первую волну маркетинга</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 60px; font-size: 1.5rem; color: #94a3b8;">
+                    ООО «Bio Molecula» — создатели 7Saber Perfume<br>
+                    Готовы к партнёрству
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn">←</button>
+        <button class="nav-btn" id="nextBtn">→</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 10;
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        const slideCounter = document.getElementById('slideCounter');
+        const liquidEye = document.getElementById('liquidEye');
+
+        function updateSlide(slideNumber) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[slideNumber - 1].classList.add('active');
+            
+            const progress = (slideNumber / totalSlides) * 100;
+            progressBar.style.width = progress + '%';
+            slideCounter.textContent = slideNumber + ' / ' + totalSlides;
+            
+            currentSlide = slideNumber;
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentSlide > 1) {
+                updateSlide(currentSlide - 1);
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentSlide < totalSlides) {
+                updateSlide(currentSlide + 1);
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentSlide > 1) {
+                updateSlide(currentSlide - 1);
+            } else if (e.key === 'ArrowRight' && currentSlide < totalSlides) {
+                updateSlide(currentSlide + 1);
+            }
+        });
+
+        // Liquid eye follows cursor with smooth movement
+        let mouseX = 0;
+        let mouseY = 0;
+        let eyeX = 0;
+        let eyeY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateEye() {
+            // Smooth following animation
+            eyeX += (mouseX - eyeX - 150) * 0.05;
+            eyeY += (mouseY - eyeY - 150) * 0.05;
+            
+            liquidEye.style.left = eyeX + 'px';
+            liquidEye.style.top = eyeY + 'px';
+            
+            requestAnimationFrame(animateEye);
+        }
+
+        animateEye();
+
+        // Initialize
+        updateSlide(1);
+    </script>
+</body>
+</html>
