@@ -3,41 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bio Molecula × Glamour | Парфюмерный Проект (только текст)</title>
+  <title>Bio Molecula × Glamour | Парфюмерный проект — текстовые бренды</title>
+
   <style>
-    /* ====== СИСТЕМА ПРОПОРЦИЙ ====== */
+    /* ===== Базовая система пропорций (8-pt grid) ===== */
     :root{
-      --base: 8px;            /* базовый модуль (8pt grid) */
-      --ratio: 1.333;         /* модульная шкала (кварта) */
-      --r1: calc(1rem * var(--ratio));
-      --r2: calc(var(--r1) * var(--ratio));
+      --base: 8px;
       --space-1: calc(var(--base) * 1);
       --space-2: calc(var(--base) * 2);
       --space-3: calc(var(--base) * 3);
       --space-4: calc(var(--base) * 4);
       --space-5: calc(var(--base) * 5);
       --radius: 16px;
-      --stroke: 1px;
-      --bg-1: #1a1f2e;
-      --bg-2: #2d3748;
-      --ink-1: #e2e8f0;
-      --ink-2: #cbd5e1;
-      --ink-3: #94a3b8;
-      --card-bg: rgba(51,65,85,0.30);
-      --card-bg-hover: rgba(71,85,105,0.40);
-      --card-stroke: rgba(148,163,184,0.20);
-      --card-stroke-hover: rgba(148,163,184,0.45);
-      --gloss: rgba(148,163,184,0.10);
+      --ink-1:#e2e8f0; --ink-2:#cbd5e1; --ink-3:#94a3b8;
+      --card-bg: rgba(51,65,85,.30);
+      --card-bg-hover: rgba(71,85,105,.40);
+      --card-stroke: rgba(148,163,184,.20);
+      --card-stroke-hover: rgba(148,163,184,.45);
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
     body{
-      font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-1) 100%);
-      color: var(--ink-1);
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:linear-gradient(135deg,#1a1f2e 0%,#2d3748 50%,#1a1f2e 100%);
+      color:var(--ink-1);
       overflow-x:hidden;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
     .container{width:100vw;height:100vh;position:relative;overflow:hidden}
@@ -47,121 +38,99 @@
     }
     .slide.active{opacity:1}
 
-    /* Фоны */
-    .animated-background{
-      position:fixed;inset:0;z-index:-2;
+    /* Фон + мягкая сетка */
+    .animated-background{position:fixed;inset:0;z-index:-2;
       background:linear-gradient(135deg,#1e293b 0%,#334155 25%,#475569 50%,#334155 75%,#1e293b 100%);
       background-size:400% 400%; animation:gradientShift 15s ease infinite;
     }
     @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    .grid-background{
-      position:fixed;inset:0;z-index:0;pointer-events:none;
+    .grid-background{position:fixed;inset:0;z-index:0;pointer-events:none;
       background-image:
         linear-gradient(rgba(148,163,184,.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(148,163,184,.035) 1px, transparent 1px);
       background-size:50px 50px;
     }
-
-    /* Декоративные «капли» (оставляем для глубины) */
-    .liquid-eye-container{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
     .liquid-blob{position:absolute;border-radius:50%;animation:blobFloat 8s ease-in-out infinite;filter:blur(40px);opacity:.15}
-    .blob1{width:400px;height:400px;top:20%;left:10%;background: radial-gradient(circle,#64748b 0%, transparent 70%);animation-delay:0s}
-    .blob2{width:350px;height:350px;top:60%;right:15%;background: radial-gradient(circle,#475569 0%, transparent 70%);animation-delay:2s}
-    .blob3{width:300px;height:300px;bottom:20%;left:50%;background: radial-gradient(circle,#334155 0%, transparent 70%);animation-delay:4s}
+    .blob1{width:400px;height:400px;top:20%;left:10%;background: radial-gradient(circle,#64748b 0%,transparent 70%);animation-delay:0s}
+    .blob2{width:350px;height:350px;top:60%;right:15%;background: radial-gradient(circle,#475569 0%,transparent 70%);animation-delay:2s}
+    .blob3{width:300px;height:300px;bottom:20%;left:50%;background: radial-gradient(circle,#334155 0%,transparent 70%);animation-delay:4s}
     @keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-50px) scale(1.1)}66%{transform:translate(-50px,50px) scale(.9)}}
 
     .slide-content{max-width:1200px;z-index:2;position:relative}
     h1{
-      font-size:clamp(2.8rem, 6vw, 6rem);
-      font-weight:200; letter-spacing:-.02em; margin-bottom:var(--space-3); line-height:1.1;
-      color:#f1f5f9; text-shadow:0 2px 20px rgba(148,163,184,.28);
+      font-size:clamp(2.8rem,6vw,6rem); font-weight:200; letter-spacing:-.02em;
+      margin-bottom:var(--space-3); line-height:1.1; color:#f1f5f9;
+      text-shadow:0 2px 20px rgba(148,163,184,.28);
     }
     h2{
-      font-size:clamp(1.8rem, 3.5vw, 3rem);
-      font-weight:300; letter-spacing:-.01em; margin-bottom:var(--space-4);
-      border-left:4px solid var(--ink-3); padding-left:var(--space-3); color:var(--ink-1);
+      font-size:clamp(1.8rem,3.5vw,3rem); font-weight:300; letter-spacing:-.01em;
+      margin-bottom:var(--space-4); border-left:4px solid var(--ink-3);
+      padding-left:var(--space-3); color:var(--ink-1);
     }
     h3{font-size:1.5rem;font-weight:400;margin-bottom:var(--space-2);color:var(--ink-2)}
     p{font-size:1.2rem;line-height:1.8;color:var(--ink-2);font-weight:300}
 
-    .highlight{color:#f1f5f9;font-weight:500;position:relative;display:inline-block}
-    .highlight::after{
-      content:''; position:absolute; bottom:-6px; left:0; width:100%; height:2px;
-      background:linear-gradient(90deg,#94a3b8,#cbd5e1); transform:scaleX(0); transition:transform .3s ease;
-    }
-    .slide.active .highlight::after{transform:scaleX(1)}
-
-    /* ====== БРЕНДЫ: ТОЛЬКО ТЕКСТ ====== */
+    /* ===== Бренды: ТОЛЬКО ТЕКСТ, ровно и читабельно ===== */
     .brand-grid{
       display:grid;
-      grid-template-columns:repeat(4, minmax(220px, 1fr));
-      gap:var(--space-4);
+      grid-template-columns:repeat(4, minmax(220px,1fr));
+      gap:clamp(16px,2vw,30px);
       margin-top:var(--space-4);
-      align-items:stretch;
     }
     .brand-item{
-      position:relative;
-      display:grid; place-items:center;
-      padding: var(--space-4) var(--space-5);
-      background: var(--card-bg);
-      border: var(--stroke) solid var(--card-stroke);
-      border-radius: var(--radius);
-      backdrop-filter: blur(10px);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
-      aspect-ratio: 7 / 3;                 /* строгая пропорция карточки */
-      overflow:hidden;
-      isolation:isolate;
+      aspect-ratio: 3 / 1.2;       /* одинаковая высота карточек */
+      padding:0 clamp(16px,1.2vw,24px);
+      background:var(--card-bg);
+      border:1px solid var(--card-stroke);
+      border-radius:var(--radius);
+      backdrop-filter:blur(10px);
+      display:flex;align-items:center;justify-content:center;
+      position:relative;overflow:hidden;transition:.25s ease;
     }
-    /* Внутренняя рамка по сетке */
     .brand-item::before{
-      content:'';
-      position:absolute; inset: calc(var(--space-1) + 1px);
-      border: var(--stroke) solid rgba(148,163,184,.10);
-      border-radius: calc(var(--radius) - var(--space-1));
-      opacity:.0; transition:opacity .25s ease;
-    }
-    /* Блик слева-направо */
-    .brand-item::after{
-      content:'';
-      position:absolute; inset:0; left:-100%;
-      background:linear-gradient(90deg, transparent, var(--gloss), transparent);
-      transition:left .6s ease; pointer-events:none;
+      content:"";position:absolute;inset:0;left:-100%;
+      background:linear-gradient(90deg,transparent,rgba(148,163,184,.12),transparent);
+      transition:left .45s ease;
     }
     .brand-item:hover{
-      background: var(--card-bg-hover);
-      border-color: var(--card-stroke-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.28);
+      transform:translateY(-4px);
+      background:var(--card-bg-hover);
+      border-color:var(--card-stroke-hover);
+      box-shadow:0 12px 32px rgba(0,0,0,.28);
     }
-    .brand-item:hover::before{ opacity:1; }
-    .brand-item:hover::after{ left:100%; }
+    .brand-item:hover::before{ left:100%; }
 
-    .brand-name{
-      text-transform:uppercase;
+    .brand-title{
+      display:inline-block;
+      max-width:92%;
       text-align:center;
+      text-transform:uppercase;
       color:var(--ink-1);
-      letter-spacing:.08em;
-      line-height:1.1;
-      /* адаптивный размер: держим диапазон, чтобы крупные названия не «ломали» сетку */
-      font-size: clamp(1rem, 1.6vw + 0.4rem, 1.8rem);
-      font-weight: 300;
-      padding-inline: var(--space-2);
-      text-wrap: balance;
-      overflow-wrap: anywhere;
-      max-width: 92%;
-      /* оптическая коррекция цифр/знаков, если встретятся */
-      font-variant-numeric: proportional-nums;
-      font-feature-settings: 'tnum' 0, 'liga' 1;
+
+      /* базовый кегль, дальше — авто‑подгонка; все названия в одну строку */
+      font-size:clamp(18px, 2.2vw, 28px);
+      font-weight:500;
+      line-height:1;
+      letter-spacing:.18em;     /* скрипт будет слегка менять */
+      word-spacing:.16em;
+
+      white-space:nowrap;
+      word-break:keep-all;
+      overflow-wrap:normal;
+      hyphens:manual;
+
+      text-rendering:geometricPrecision;
+      -webkit-font-smoothing:antialiased;
+      transform-origin:center;
     }
 
-    /* ====== Остальные секции (из вашего оригинала) ====== */
+    /* Остальные секции из исходника (коротко) */
     .benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4);margin-top:var(--space-4)}
     .benefit-card{padding:var(--space-4);background:rgba(51,65,85,.25);border:1px solid var(--card-stroke);transition:.3s;backdrop-filter:blur(10px);position:relative;overflow:hidden}
     .benefit-card::before{content:'';position:absolute;inset:-2px;background:linear-gradient(45deg,transparent 0%, rgba(148,163,184,.1) 50%, transparent 100%);z-index:-1;opacity:0;transition:opacity .3s}
     .benefit-card:hover::before{opacity:1}
     .benefit-card:hover{background:rgba(71,85,105,.35);transform:scale(1.02);box-shadow:0 15px 40px rgba(0,0,0,.4)}
     .benefit-number{font-size:clamp(2.2rem, 4vw, 4rem);font-weight:100;color:rgba(148,163,184,.3);margin-bottom:var(--space-2)}
-
     .launch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-top:var(--space-4)}
     .launch-card{padding:calc(var(--space-4) + 4px) var(--space-4);background:rgba(51,65,85,.30);border:2px solid var(--card-stroke);transition:.35s;position:relative;overflow:hidden;backdrop-filter:blur(10px)}
     .launch-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#64748b,#94a3b8,#cbd5e1);transform:scaleX(0);transition:transform .35s}
@@ -171,47 +140,24 @@
     .launch-card h3{font-size:clamp(1.1rem, 1.2vw + .5rem, 1.6rem);font-weight:400;margin-bottom:var(--space-2);color:#f1f5f9}
     .launch-card p{font-size:1.05rem;line-height:1.6;color:var(--ink-2)}
 
-    /* Навигация */
     .nav-controls{position:fixed;bottom:var(--space-4);right:var(--space-4);display:flex;gap:var(--space-3);z-index:100}
-    .nav-btn{
-      width:48px;height:48px;border:2px solid rgba(148,163,184,.4);background:rgba(30,41,59,.7);color:var(--ink-1);
-      cursor:pointer;font-size:1.25rem;display:flex;align-items:center;justify-content:center;transition:.25s;backdrop-filter:blur(10px);
-    }
+    .nav-btn{width:48px;height:48px;border:2px solid rgba(148,163,184,.4);background:rgba(30,41,59,.7);color:var(--ink-1);cursor:pointer;font-size:1.25rem;display:flex;align-items:center;justify-content:center;transition:.25s;backdrop-filter:blur(10px)}
     .nav-btn:hover{background:rgba(71,85,105,.8);border-color:#94a3b8;transform:scale(1.06);box-shadow:0 5px 20px rgba(148,163,184,.3)}
-
-    /* Прогресс/счётчик */
     .progress{position:fixed;top:0;left:0;width:100%;height:3px;background:rgba(51,65,85,.5);z-index:100}
     .progress-bar{height:100%;background:linear-gradient(90deg,#64748b,#94a3b8,#cbd5e1);transition:width .3s ease;box-shadow:0 0 20px rgba(148,163,184,.5)}
     .slide-counter{position:fixed;top:var(--space-4);right:var(--space-4);font-size:.95rem;color:var(--ink-3);z-index:100;font-weight:300}
 
-    /* Адаптив */
-    @media (max-width:1200px){
-      .brand-grid{grid-template-columns:repeat(3, 1fr); gap:var(--space-3)}
-      .launch-grid{grid-template-columns:repeat(2, 1fr)}
-    }
-    @media (max-width:900px){
-      .slide{padding:calc(var(--space-4) + 3vh) var(--space-4)}
-      .brand-grid{grid-template-columns:repeat(2, 1fr)}
-    }
-    @media (max-width:600px){
-      .brand-grid{gap:var(--space-2)}
-      .brand-item{aspect-ratio: 16 / 9; padding: var(--space-3) var(--space-3)}
-      .brand-name{font-size:clamp(.95rem, 2.5vw + .5rem, 1.4rem); letter-spacing:.07em}
-      .nav-controls{bottom:var(--space-3); right:var(--space-3)}
-      .slide-counter{top:var(--space-3); right:var(--space-3)}
-    }
+    /* Адаптивные колонки */
+    @media (max-width:1200px){ .brand-grid{ grid-template-columns:repeat(3, minmax(220px,1fr)); } }
+    @media (max-width:780px){  .brand-grid{ grid-template-columns:repeat(2, minmax(200px,1fr)); } }
   </style>
 </head>
 <body>
   <div class="animated-background"></div>
   <div class="grid-background"></div>
-
-  <!-- мягкие «блики» для глубины -->
-  <div class="liquid-eye-container">
-    <div class="liquid-blob blob1"></div>
-    <div class="liquid-blob blob2"></div>
-    <div class="liquid-blob blob3"></div>
-  </div>
+  <div class="liquid-blob blob1"></div>
+  <div class="liquid-blob blob2"></div>
+  <div class="liquid-blob blob3"></div>
 
   <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
   <div class="slide-counter" id="slideCounter">1 / 10</div>
@@ -270,30 +216,30 @@
       </div>
     </div>
 
-    <!-- 4: Портфель брендов (ТОЛЬКО ТЕКСТ) -->
+    <!-- 4: бренды (только текст) -->
     <div class="slide" data-slide="4">
       <div class="slide-content">
         <h2>Портфель брендов</h2>
         <div class="brand-grid">
-          <div class="brand-item"><div class="brand-name">Clive Christian</div></div>
-          <div class="brand-item"><div class="brand-name">Stefano Ricci</div></div>
-          <div class="brand-item"><div class="brand-name">Byredo</div></div>
-          <div class="brand-item"><div class="brand-name">Kilian Paris</div></div>
+          <div class="brand-item"><div class="brand-title">Clive Christian</div></div>
+          <div class="brand-item"><div class="brand-title">Stefano Ricci</div></div>
+          <div class="brand-item"><div class="brand-title">Byredo</div></div>
+          <div class="brand-item"><div class="brand-title">Kilian Paris</div></div>
 
-          <div class="brand-item"><div class="brand-name">Boadicea The Victorious</div></div>
-          <div class="brand-item"><div class="brand-name">Memo Paris</div></div>
-          <div class="brand-item"><div class="brand-name">Dr. Vranjes</div></div>
-          <div class="brand-item"><div class="brand-name">Louis Vuitton</div></div>
+          <div class="brand-item"><div class="brand-title">Boadicea The Victorious</div></div>
+          <div class="brand-item"><div class="brand-title">Memo Paris</div></div>
+          <div class="brand-item"><div class="brand-title">Dr. Vranjes</div></div>
+          <div class="brand-item"><div class="brand-title">Louis Vuitton</div></div>
 
-          <div class="brand-item"><div class="brand-name">Hermès</div></div>
-          <div class="brand-item"><div class="brand-name">Ex Nihilo</div></div>
-          <div class="brand-item"><div class="brand-name">Amouage</div></div>
-          <div class="brand-item"><div class="brand-name">Creed</div></div>
+          <div class="brand-item"><div class="brand-title">Hermès</div></div>
+          <div class="brand-item"><div class="brand-title">Ex Nihilo</div></div>
+          <div class="brand-item"><div class="brand-title">Amouage</div></div>
+          <div class="brand-item"><div class="brand-title">Creed</div></div>
 
-          <div class="brand-item"><div class="brand-name">Molton Brown</div></div>
-          <div class="brand-item"><div class="brand-name">Xerjoff</div></div>
-          <div class="brand-item"><div class="brand-name">Marc‑Antoine Barrois</div></div>
-          <div class="brand-item"><div class="brand-name">Aurezzi</div></div>
+          <div class="brand-item"><div class="brand-title">Molton Brown</div></div>
+          <div class="brand-item"><div class="brand-title">Xerjoff</div></div>
+          <div class="brand-item"><div class="brand-title">Marc‑Antoine Barrois</div></div>
+          <div class="brand-item"><div class="brand-title">Aurezzi</div></div>
         </div>
       </div>
     </div>
@@ -381,7 +327,7 @@
     <!-- 10 -->
     <div class="slide" data-slide="10">
       <div class="slide-content" style="text-align:center;">
-        <h2 style="border:none;padding:0;font-size:clamp(2rem,4.2vw,4rem);margin-bottom:var(--space-5);">Следующие шаги</h2>
+        <h2 style="border:none; padding:0; font-size:clamp(2rem,4.2vw,4rem); margin-bottom:var(--space-5);">Следующие шаги</h2>
         <div class="benefit-card" style="display:inline-block; text-align:left; max-width:700px;">
           <ul style="list-style:none; margin:0; padding:0;">
             <li style="padding: var(--space-2) 0; border-bottom:1px solid rgba(148,163,184,.15);">Подписать протокол о намерениях</li>
@@ -403,9 +349,8 @@
   </div>
 
   <script>
-    /* Прогресс/навигация */
-    let currentSlide=1;
-    const totalSlides=10;
+    /* Слайды / прогресс */
+    let currentSlide=1; const totalSlides=10;
     const slides=[...document.querySelectorAll('.slide')];
     const progressBar=document.getElementById('progressBar');
     const slideCounter=document.getElementById('slideCounter');
@@ -413,9 +358,11 @@
     function updateSlide(n){
       slides.forEach(s=>s.classList.remove('active'));
       slides[n-1].classList.add('active');
-      progressBar.style.width = (n/totalSlides*100) + '%';
-      slideCounter.textContent = n + ' / ' + totalSlides;
+      progressBar.style.width=(n/totalSlides*100)+'%';
+      slideCounter.textContent=n+' / '+totalSlides;
       currentSlide=n;
+      // При переходе — пересчитать подгонку названий
+      requestAnimationFrame(fitBrandTitles);
     }
     document.getElementById('prevBtn').addEventListener('click',()=>{if(currentSlide>1)updateSlide(currentSlide-1)});
     document.getElementById('nextBtn').addEventListener('click',()=>{if(currentSlide<totalSlides)updateSlide(currentSlide+1)});
@@ -424,7 +371,45 @@
       else if(e.key==='ArrowRight' && currentSlide<totalSlides) updateSlide(currentSlide+1);
     });
 
-    updateSlide(1);
+    /* === Авто‑подгонка текста в карточках брендов ===
+       - длинные названия уменьшаем равномерно (scale) до 94% ширины карточки,
+       - короткие — слегка увеличиваем межбуквие, чтобы визуально «добрать» ширину. */
+    function fitBrandTitles(){
+      const TARGET = 0.94;     // целевая доля ширины карточки
+      const MIN_SCALE = 0.70;  // минимальный масштаб для очень длинных названий
+      const BASE_TRACK_EM = 0.18;   // базовый letter-spacing (em)
+      const MAX_ADD_EM   = 0.35;    // максимум добавки к трекингу (em)
+
+      document.querySelectorAll('.brand-item .brand-title').forEach(el=>{
+        const box = el.closest('.brand-item'); if(!box) return;
+
+        // сброс
+        el.style.transform = 'none';
+        el.style.letterSpacing = BASE_TRACK_EM + 'em';
+
+        const boxW = box.clientWidth;
+        const fs   = parseFloat(getComputedStyle(el).fontSize) || 16;
+
+        // реальная ширина текста без скейла
+        const w = el.scrollWidth;
+
+        if (w > boxW * TARGET){
+          // слишком длинное — уменьшаем равномерно (X и Y)
+          const scale = Math.max(MIN_SCALE, Math.min(1, (boxW * TARGET) / w));
+          el.style.transform = `scale(${scale})`;
+        } else {
+          // короткое — добавим немножко межбуквия, чтобы визуально заполнить карточку
+          const chars = el.textContent.replace(/\s/g,'').length || 1;
+          const deltaPx = (boxW * TARGET - w) / chars;
+          const addEm = Math.min(deltaPx / fs, MAX_ADD_EM);
+          el.style.letterSpacing = `calc(${BASE_TRACK_EM}em + ${addEm}em)`;
+        }
+      });
+    }
+
+    // запуск
+    window.addEventListener('load', ()=>{ fitBrandTitles(); updateSlide(1); });
+    window.addEventListener('resize', ()=>{ requestAnimationFrame(fitBrandTitles); });
   </script>
 </body>
 </html>
