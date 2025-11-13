@@ -279,7 +279,7 @@
             transform: scaleX(1);
         }
 
-        /* Brand Grid with Logos */
+        /* Brand Grid with Text Styling */
         .brand-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -324,24 +324,33 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .brand-logo {
-            max-width: 100%;
-            max-height: 60px;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-            opacity: 0.9;
-            transition: all 0.3s ease;
+        .brand-name {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #f1f5f9;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
         }
 
-        .brand-item:hover .brand-logo {
-            opacity: 1;
+        .brand-name::before {
+            content: '◆';
+            display: block;
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 10px;
+            opacity: 0.6;
+        }
+
+        .brand-item:hover .brand-name {
+            color: #fff;
             transform: scale(1.05);
         }
 
-        .brand-text {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: #e2e8f0;
+        .brand-item:hover .brand-name::before {
+            opacity: 1;
+            color: #cbd5e1;
         }
 
         /* Benefits Section */
@@ -757,72 +766,58 @@
             </div>
         </div>
 
-        <!-- Slide 4: Brands Portfolio with Logos -->
+        <!-- Slide 4: Brands Portfolio -->
         <div class="slide" data-slide="4">
             <div class="slide-content">
                 <h2>Портфель брендов</h2>
                 <div class="brand-grid">
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/clivechristian.com" alt="Clive Christian" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Clive Christian</span>
+                        <span class="brand-name">Clive Christian</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/stefanoricci.com" alt="Stefano Ricci" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Stefano Ricci</span>
+                        <span class="brand-name">Stefano Ricci</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/byredo.com" alt="Byredo" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Byredo</span>
+                        <span class="brand-name">Byredo</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/kilianparis.com" alt="KILIAN Paris" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">KILIAN Paris</span>
+                        <span class="brand-name">KILIAN Paris</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/boadiceathevictorious.com" alt="Boadicea" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Boadicea</span>
+                        <span class="brand-name">Boadicea</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/memoparis.com" alt="Memo Paris" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Memo Paris</span>
+                        <span class="brand-name">Memo Paris</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/drvranjes.com" alt="Dr. Vranjes" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Dr. Vranjes</span>
+                        <span class="brand-name">Dr. Vranjes</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/louisvuitton.com" alt="Louis Vuitton" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Louis Vuitton</span>
+                        <span class="brand-name">Louis Vuitton</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/hermes.com" alt="Hermès" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Hermès</span>
+                        <span class="brand-name">Hermès</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/exnihiloparis.com" alt="Ex Nihilo" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Ex Nihilo</span>
+                        <span class="brand-name">Ex Nihilo</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/amouage.com" alt="Amouage" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Amouage</span>
+                        <span class="brand-name">Amouage</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/creedfragrances.com" alt="Creed" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Creed</span>
+                        <span class="brand-name">Creed</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/moltonbrown.com" alt="Molton Brown" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Molton Brown</span>
+                        <span class="brand-name">Molton Brown</span>
                     </div>
                     <div class="brand-item">
-                        <img src="https://logo.clearbit.com/xerjoff.com" alt="Xerjoff" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="brand-text" style="display:none;">Xerjoff</span>
+                        <span class="brand-name">Xerjoff</span>
                     </div>
                     <div class="brand-item">
-                        <span class="brand-text" style="display:block;">Marc-Antoine Barrois</span>
+                        <span class="brand-name">M.A. Barrois</span>
                     </div>
                     <div class="brand-item">
-                        <span class="brand-text" style="display:block;">AUREZZI</span>
+                        <span class="brand-name">Aurezzi</span>
                     </div>
                 </div>
             </div>
